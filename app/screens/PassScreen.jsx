@@ -85,6 +85,8 @@ const PassScreen = ({ route, navigation }) => {
 
             <Text style={styles.label}>Password:</Text>
             <Text style={styles.value} >{currentData.password}</Text>
+            <Text style={styles.label}>Created on:</Text>
+            <Text style={styles.value} >{currentData.creationDate}</Text>
 
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.button} onPress={copyToClipboard}>

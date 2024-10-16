@@ -6,6 +6,7 @@ import { TouchableOpacity } from 'react-native';
 import { colors } from '../Assets/colors';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Slider } from '@miblanchard/react-native-slider';
+import moment from 'moment';
 
 const AddPasswordScreen = ({ navigation }) => {
     const [website, setWebsite] = useState('');
@@ -18,6 +19,7 @@ const AddPasswordScreen = ({ navigation }) => {
     const [includeSymbols, setIncludeSymbols] = useState(false);
     const [includeLowercase, setIncludeLowercase] = useState(true);
     const [includeUppercase, setIncludeUppercase] = useState(true);
+    const [creationDate] = useState(moment().format('YYYY-MM-DD HH:mm:ss'));
 
    
     navigation.setOptions({
@@ -86,7 +88,7 @@ const AddPasswordScreen = ({ navigation }) => {
             return;
         }
 
-        const newPassword = { website, username, password, passwordStrength, id: Date.now() };
+        const newPassword = { website, username, password, passwordStrength, id: Date.now() ,creationDate};
         try {
             const storedPasswords = await AsyncStorage.getItem('passwords');
             const passwordsArray = storedPasswords ? JSON.parse(storedPasswords) : [];
